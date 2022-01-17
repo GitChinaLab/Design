@@ -35,7 +35,7 @@
 
 <img src="./doc-assets/logo-reddit.png" width="200">
 
-- 大众
+- WordPress
 
 <img src="./doc-assets/logo-dazhong.png" width="200">
 
