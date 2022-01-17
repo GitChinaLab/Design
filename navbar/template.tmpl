@@ -1,0 +1,134 @@
+<script>
+  function applyCodebergVariables(elements, attribute) {
+    if (typeof codebergVariables === "undefined") return;
+    if (typeof attribute !== "undefined") {
+      let newValue = (attribute in elements) ? elements[attribute] : ("getAttribute" in elements) ? elements.getAttribute(attribute) : undefined;
+      if (!newValue) return;
+      for (let key in codebergVariables) newValue = newValue
+              .replace("%" + key, codebergVariables[key])
+              .replace(encodeURIComponent("%" + key), codebergVariables[key]);
+      if (attribute in elements && newValue !== elements[attribute]) elements[attribute] = newValue;
+      else if ("getAttribute" in elements && newValue !== elements.getAttribute(attribute)) elements.setAttribute(attribute, newValue);
+      return;
+    }
+    for (const el of elements) {
+      applyCodebergVariables(el, "href");
+      applyCodebergVariables(el, "replace-src");
+      if ("getAttribute" in el && el.getAttribute("replace-src")) el.src = el.getAttribute("replace-src");
+      if (el.nodeType === Node.TEXT_NODE) applyCodebergVariables(el, "textContent");
+      applyCodebergVariables(el.childNodes);
+    }
+  }
+  document.addEventListener("load", () => {
+    applyCodebergVariables(document.querySelectorAll(".codeberg-variables"));
+  })
+</script>
+
+<div class="ui top secondary stackable main menu following bar light">
+  <div class="ui container codeberg-variables shown" id="navbar">
+    <style scoped id="navbar-conditions"></style>
+    <div class="ui custom dropdown item">
+      <div class="text">
+        <div class="brand">
+          <img class="ui mini image" src="{{ .brand.logo }}">
+        </div>
+        <span class="service">
+          {{ range .brand.services }}{{ if eq .name $.context.service }}
+            {{ .title | i18n }}
+          {{ end }}{{ end }}
+        </span><i class="dropdown icon"></i>
+      </div>
+      <div class="menu transition hidden">
+        <form class="ui form ignore-dirty search" action="{{ .brand.search.action }}" method="{{ .brand.search.method }}">
+          <div class="ui fluid action input">
+            <input name="{{ .brand.search.parameter }}" value="" {{ i18nAttribute "placeholder" .brand.search.placeholder }}>
+            {{ range $key, $value := .brand.search.hidden }}
+            <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+            {{ end }}
+            <button class="ui button"><i class="search icon"></i></button>
+          </div>
+        </form>
+
+        {{ range .brand.services }}{{ if eq .name $.context.service }}
+        <input type="checkbox" hidden id="mobile-service-expand">
+        <label href="{{ .href }}" data-service="{{ .name }}" class="mobile-service" for="mobile-service-expand">
+          <strong>Codeberg {{ .title | i18n }}</strong><br>
+          <small>{{ .description | i18n }}</small>
+          <i class="angle down icon"></i>
+          <i class="angle up icon"></i>
+        </label>
+        {{ end }}{{ end }}
+
+        <div class="services column">
+          {{ range .brand.services }}
+          <a href="{{ .href }}" data-service="{{ .name }}" class="{{ if eq .name $.context.service }}current {{ end }}item">
+            <strong>{{ .title | i18n }}</strong><br>
+            <small>{{ .description | i18n }}</small>
+          </a>
+          {{ end }}
+        </div>
+        <div class="column">
+          {{ range .context.links }}
+            <a class="item {{ .class }}" href="{{ .href }}">{{ .title | i18n }}</a>
+          {{ end }}
+
+          <div class="ui vertical labeled icon buttons" style="margin-top: auto">
+            {{ range .brand.links }}
+              <a class="ui button {{ .class }}" href="{{ .href }}" target="_blank">{{ if .icon }}<i class="{{ .icon }}"></i>{{ end }} {{ .title | i18n }}</a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form class="ui form ignore-dirty item right search" action="{{ .brand.search.action }}" method="{{ .brand.search.method }}">
+      <div class="ui fluid action input">
+        <input name="{{ .brand.search.parameter }}" value="" {{ i18nAttribute "placeholder" .brand.search.placeholder }}>
+        {{ range $key, $value := .brand.search.hidden }}
+        <input type="hidden" name="{{ $key }}" value="{{ $value }}">
+        {{ end }}
+        <button class="ui button"><i class="search icon"></i></button>
+      </div>
+    </form>
+
+    <div class="right stackable menu">
+      {{ range .brand.right }}
+      {{ if .href }}<a{{ else }}<div{{ end }}
+              class="item {{ if or .image .icon }}icon-only{{ end }} {{ if eq .requiredLoginStatus false }}guests-only{{ else if eq .requiredLoginStatus true }}users-only{{ end }} {{ .class }} {{ if .dropdown }}ui custom dropdown jump{{ end }}"
+              {{ i18nAttribute "title" .title }}
+              {{ if .href }}href="{{ .href }}"{{ end }}
+              >
+        <span class="text">
+          {{ if .icon }}<i class="{{ .icon }}"></i><span class="sr-only">{{ i18n .title }}</span>
+          {{ else if .image }}<img class="ui tiny avatar image" replace-src="{{ .image }}" width="24" height="24"><span class="sr-only">{{ i18n .title }}</span>
+          {{ else }}{{ i18n .title }}{{ end }}
+          {{ if .badge }}<span class="ui red label notification_count">{{ .badge }}</span>{{ end }}
+        </span>
+        {{ if .dropdown }}<div class="menu hidden transition" tabindex="-1">
+          {{ range .dropdown }}
+          {{ if .href }}<a{{ else }}<div{{ end }} class="{{ if .class }}{{ .class }}{{ else }}item{{ end }}" href="{{ .href }}" tabindex="-1" role="{{ if eq (printf "%s" .class) "divider" }}separator{{ else }}menuitem{{ end }}">
+            {{ if .icon }}<span class="fitted"><i class="{{ .icon }}"></i></span>{{ end }} {{ i18n .title }}
+          {{ if .href }}</a>{{ else }}</div>{{ end }}
+          {{ end }}
+        </div>{{ end }}
+      {{ if .href }}</a>{{ else }}</div>{{ end }}
+      {{ end }}
+    </div>
+  </div>
+</div>
+<script>
+  // Don't show navbar dropdown on page load
+  $("#navbar .ui.dropdown").dropdown({ action: "hide" });
+
+  // Translate variables in navbar
+  const lang = document.documentElement.lang || navigator.language;
+  [...document.querySelectorAll("#navbar i18n")].forEach(el => el.outerHTML = (
+      el.querySelector("template[i18n-language=" + lang + "]") ||
+      el.querySelector("template[i18n-language=" + lang.match(/^[a-z]*/)[0] + "]") ||
+      { innerHTML: el.firstChild.textContent }
+      ).innerHTML);
+
+  // Apply variables to navbar
+  applyCodebergVariables(document.querySelectorAll(".codeberg-variables"));
+  document.getElementById("navbar-conditions").textContent = (typeof codebergVariables === "undefined" || !codebergVariables.u ? ".users-only" : ".guests-only") + " { display: none !important; }";
+</script>

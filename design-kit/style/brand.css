@@ -1,0 +1,174 @@
+html[class*="theme-"] {
+    /* Codeberg Font for Gitea */
+    --fonts-override: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.codeberg-design {
+    /* Codeberg Font */
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --base-line-height: 1.5;
+    --checkbox-line-height: 1.5;
+
+    /* Codeberg Blue */
+    --blue-color: #2185d0; /* rgba(33, 133, 208, 1) */
+    --blue-color-light: #44adff;
+    --blue-color-very-light: #b5ddff;
+    --blue-color-dark: #165b8d;
+    --blue-color-very-dark: #0b3049;
+    --blue-box-shadow-color: rgba(33, 133, 208, 0.3);
+    --blue-box-shadow-color-darker: rgba(33, 133, 208, 0.6);
+    --text-color-on-blue-color-bg: #ffffff;
+
+    /* Make alerts without class more visible */
+    --lm-alert-bg-color: #f3f4f5;
+
+    /* Codeberg Navbar */
+    --lm-navbar-bg-color: var(--blue-color);
+    --lm-navbar-border-color: var(--blue-box-shadow-color);
+    --lm-navbar-text-color: #fff;
+
+    --lm-navbar-link-text-color: #fff;
+    --lm-navbar-link-text-color-hover: var(--lm-navbar-link-text-color);
+    --lm-navbar-link-bg-color: transparent;
+    --lm-navbar-link-bg-color-hover: rgba(255,255,255,0.15);
+
+    --lm-navbar-link-active-text-color: var(--lm-navbar-link-text-color);
+    --lm-navbar-link-active-text-color-hover: var(--lm-navbar-link-text-color-hover);
+    --lm-navbar-link-active-bg-color: rgba(255,255,255,0.15);
+    --lm-navbar-link-active-bg-color-hover: rgba(255,255,255,0.2);
+
+    --lm-navbar-brand-text-color: var(--lm-navbar-link-text-color);
+    --lm-navbar-brand-text-color-hover: var(--lm-navbar-link-text-color-hover);
+
+    /* Codeberg Navbar: take dark colors from light colors */
+    --dm-navbar-bg-color: var(--lm-navbar-bg-color);
+    --dm-navbar-border-color: var(--lm-navbar-border-color);
+    --dm-navbar-text-color: var(--lm-navbar-text-color);
+    --dm-navbar-link-text-color: var(--lm-navbar-link-text-color);
+    --dm-navbar-link-text-color-hover: var(--lm-navbar-link-text-color-hover);
+    --dm-navbar-link-bg-color: var(--lm-navbar-link-bg-color);
+    --dm-navbar-link-bg-color-hover: var(--lm-navbar-link-bg-color-hover);
+    --dm-navbar-link-active-text-color: var(--lm-navbar-link-active-text-color);
+    --dm-navbar-link-active-text-color-hover: var(--lm-navbar-link-active-text-color-hover);
+    --dm-navbar-link-active-bg-color: var(--lm-navbar-link-active-bg-color);
+    --dm-navbar-link-active-bg-color-hover: var(--lm-navbar-link-active-bg-color-hover);
+    --dm-navbar-brand-text-color: var(--lm-navbar-brand-text-color);
+    --dm-navbar-brand-text-color-hover: var(--lm-navbar-brand-text-color-hover);
+
+}
+
+/* looks & focus indication of navbar buttons and inputs */
+.codeberg-design .navbar {
+    /* take some light colors from the original dark color scheme */
+    --lm-input-text-color: var(--dm-input-text-color);
+    --lm-input-box-shadow: var(--dm-input-box-shadow);
+    --lm-input-text-color-hover: var(--dm-input-text-color-hover);
+    --lm-input-box-shadow-hover: var(--dm-input-box-shadow-hover);
+    --lm-input-text-color-focus: var(--dm-input-text-color-focus);
+    --lm-input-text-color-disabled: var(--dm-input-text-color-disabled);
+    --lm-input-bg-color-disabled: var(--dm-input-bg-color-disabled);
+    --lm-input-border-color-disabled: var(--dm-input-border-color-disabled);
+
+    --lm-input-box-shadow-focus: 0 0 0 3px rgba(0,0,0,0.15);
+    --lm-input-placeholder-text-color: rgba(255,255,255,0.8);
+    --lm-input-bg-color: rgba(255,255,255,0.15);
+    --lm-input-border-color: var(--primary-color);
+    --lm-input-bg-color-hover: rgba(255,255,255,0.2);
+	--lm-input-border-color-hover: var(--primary-color-light);
+    --lm-input-bg-color-focus: rgba(255,255,255,0.2);
+    --lm-input-border-color-focus: var(--primary-color-light);
+	--lm-button-box-shadow-focus: 0 0 0 3px rgba(0,0,0,0.15);
+    /* take dark colors from light colors */
+	--dm-input-box-shadow-focus: var(--lm-input-box-shadow-focus);
+	--dm-input-placeholder-text-color: var(--lm-input-placeholder-text-color);
+    --dm-input-bg-color: var(--lm-input-bg-color);
+    --dm-input-border-color: var(--lm-input-border-color);
+    --dm-input-bg-color-hover: var(--lm-input-bg-color-hover);
+	--dm-input-border-color-hover: var(--lm-input-border-color-hover);
+    --dm-input-bg-color-focus: var(--lm-input-bg-color-focus);
+    --dm-input-border-color-focus: var(--primary-color-light);
+	--dm-button-box-shadow-focus: var(--lm-button-box-shadow-focus);
+}
+
+.codeberg-design .navbar .btn-link {
+	--lm-button-link-text-color: var(--lm-navbar-link-text-color);
+	--lm-button-link-text-color-hover: var(--lm-navbar-link-text-color-hover);
+	--lm-button-link-text-color-focus: var(--lm-navbar-link-text-color);
+	--lm-button-link-box-shadow-focus: var(--lm-button-box-shadow-focus);
+	/* take dark colors from light colors */
+	--dm-button-link-text-color: var(--lm-button-link-text-color);
+	--dm-button-link-text-color-hover: var(--lm-button-link-text-color-hover);
+	--dm-button-link-text-color-focus: var(--lm-button-link-text-color-focus);
+	--dm-button-link-box-shadow-focus: var(--lm-button-link-box-shadow-focus);
+}
+
+.codeberg-design .navbar .btn-primary {
+	--lm-button-primary-bg-color: var(--lm-navbar-link-active-bg-color);
+	--lm-button-primary-border-color: transparent;
+	--lm-button-primary-bg-color-hover: var(--lm-navbar-link-active-bg-color-hover);
+	--lm-button-primary-border-color-hover: transparent;
+	--lm-button-primary-bg-color-focus: var(--lm-navbar-link-active-bg-color);
+	--lm-button-primary-border-color-focus: transparent;
+	--lm-button-primary-box-shadow-focus: 0 0 0 3px rgba(0,0,0,0.15);
+	/* take dark colors from light colors */
+	--dm-button-primary-bg-color: var(--lm-button-primary-bg-color);
+	--dm-button-primary-border-color: var(--lm-button-primary-border-color);
+	--dm-button-primary-bg-color-hover: var(--lm-button-primary-bg-color-hover);
+	--dm-button-primary-border-color-hover: var(--lm-button-primary-border-color-hover);
+	--dm-button-primary-bg-color-focus: var(--lm-button-primary-bg-color-focus);
+	--dm-button-primary-border-color-focus: var(--lm-button-primary-border-color-focus);
+	--dm-button-primary-box-shadow-focus: var(--lm-button-primary-box-shadow-focus);
+}
+
+/* reset button/input styles of navbar in dropdowns */
+.codeberg-design .navbar .dropdown, .codeberg-design .navbar .dropdown .btn-link, .codeberg-design .navbar .dropdown .btn-primary {
+	--lm-input-box-shadow-focus: 0 0 0 2px var(--primary-box-shadow-color-darker);
+    --lm-input-placeholder-text-color: rgba(0, 0, 0, 0.35);
+	--lm-input-bg-color: #ffffff;
+    --lm-input-border-color: rgba(0, 0, 0, 0.2);
+    --lm-input-bg-color-hover: var(--lm-input-bg-color);
+	--lm-input-border-color-hover: rgba(0, 0, 0, 0.3);
+    --lm-input-bg-color-focus: var(--lm-input-bg-color);
+    --lm-input-border-color-focus: var(--lm-input-border-color);
+	--lm-button-box-shadow-focus: 0 0 0 2px var(--primary-box-shadow-color-darker);
+	--lm-button-link-text-color: var(--primary-color);
+	--lm-button-link-text-color-hover: var(--primary-color-light);
+	--lm-button-link-text-color-focus: var(--lm-button-link-text-color);
+	--lm-button-link-box-shadow-focus: var(--lm-button-box-shadow-focus);
+	--lm-button-primary-bg-color: var(--primary-color);
+	--lm-button-primary-border-color: var(--primary-color);
+	--lm-button-primary-bg-color-hover: var(--primary-color-light);
+	--lm-button-primary-border-color-hover: var(--primary-color-light);
+	--lm-button-primary-bg-color-focus: var(--lm-button-primary-bg-color);
+	--lm-button-primary-border-color-focus: var(--lm-button-primary-border-color);
+	--lm-button-primary-box-shadow-focus: 0 0 0 3px var(--primary-box-shadow-color);
+	/* dark colors */
+	--dm-input-box-shadow-focus: 0 0 0 2px var(--primary-box-shadow-color);
+	--dm-input-placeholder-text-color: rgba(255, 255, 255, 0.2);
+	--dm-input-bg-color: rgba(255, 255, 255, 0.05);
+    --dm-input-border-color: rgba(0, 0, 0, 0.3);
+    --dm-input-bg-color-hover: var(--dm-input-bg-color);
+	--dm-input-border-color-hover: rgba(0, 0, 0, 0.4);
+    --dm-input-bg-color-focus: var(--dm-input-bg-color);
+    --dm-input-border-color-focus: var(--dm-input-border-color-hover);
+	--dm-button-box-shadow-focus: 0 0 0 2px var(--primary-box-shadow-color);
+	--dm-button-link-text-color: var(--primary-color);
+	--dm-button-link-text-color-hover: var(--primary-color-light);
+	--dm-button-link-text-color-focus: var(--dm-button-link-text-color);
+	--dm-button-primary-bg-color: var(--primary-color);
+	--dm-button-primary-border-color: var(--primary-color);
+	--dm-button-primary-bg-color-hover: var(--primary-color-light);
+	--dm-button-primary-border-color-hover: var(--primary-color-light);
+	--dm-button-primary-bg-color-focus: var(--dm-button-primary-bg-color);
+	--dm-button-primary-border-color-focus: var(--dm-button-primary-border-color);
+	--dm-button-primary-box-shadow-focus: 0 0 0 3px var(--primary-box-shadow-color);
+	--dm-button-link-box-shadow-focus: var(--dm-button-box-shadow-focus);
+	/* light colors only */
+    --lm-input-text-color: var(--lm-base-text-color);
+    --lm-input-box-shadow: none;
+    --lm-input-text-color-hover: var(--lm-input-text-color);
+    --lm-input-box-shadow-hover: var(--lm-input-box-shadow);
+    --lm-input-text-color-focus: var(--lm-input-text-color);
+    --lm-input-text-color-disabled: var(--lm-input-text-color);
+    --lm-input-bg-color-disabled: var(--gray-color-light);
+    --lm-input-border-color-disabled: var(--lm-input-border-color);
+}

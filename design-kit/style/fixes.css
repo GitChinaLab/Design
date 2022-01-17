@@ -1,0 +1,32 @@
+/* Fix box-sizing & positioning (which Halfmoon only sets for html/body) */
+.codeberg-design:not(html) {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+	margin: 0 !important;
+}
+html.codeberg-design {
+	line-height: var(--base-line-height);
+}
+html.codeberg-design>body {
+	font-size: var(--base-font-size);
+}
+
+label>p:first-child {
+	margin-top: 0;
+}
+label>p:last-child {
+	margin-bottom: 0;
+}
+.codeberg-design .form-group.custom-checkbox {
+	/* Adjusted for --checkbox-line-height */
+	margin-bottom: calc(20px - 0.425em);
+}
+
+.margin-fix-last-child>:last-child, .margin-fix-last-child>:last-child>:last-child {
+	margin-bottom: 0;
+}
+.margin-fix-first-child>:first-child, .margin-fix-first-child>:first-child>:first-child {
+	margin-top: 0;
+}

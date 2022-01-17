@@ -1,0 +1,144 @@
+{
+    "logo": "http://localhost/img/logo-small.svg",
+    "status": "https://codeberg.org/status.json",
+    "search": {
+        "action": "https://codeberg.org/explore/repos",
+        "method": "GET",
+        "parameter": "q",
+        "hidden": {
+            "tab": "",
+            "sort": "moststars"
+        },
+        "placeholder": {"en": "Search everywhere", "de": "Alles durchsuchen"}
+    },
+    "right": [
+        {
+            "title": {"en": "Log in", "de": "Anmelden"},
+            "icon": "sign in alternate icon",
+            "href": "https://codeberg.org/",
+            "requiredLoginStatus": false
+        },
+        {
+            "title": {"en": "Sign up", "de": "Registrieren"},
+            "icon": "user plus icon",
+            "href": "https://codeberg.org/user/sing_up",
+            "requiredLoginStatus": false
+        },
+        {
+            "title": {"en": "Notifications", "de": "Benachrichtigungen"},
+            "icon": "bell icon",
+            "badge": "%n",
+            "href": "https://codeberg.org/notifications",
+            "requiredLoginStatus": true
+        },
+        {
+            "title": {"en": "Create new...", "de": "Neu erstellen..."},
+            "icon": "plus icon",
+            "dropdown": [
+                {
+                    "title": {"en": "New Repository", "de": "Neues Repository"},
+                    "icon": "plus icon",
+                    "href": "https://codeberg.org/repo/create"
+                },
+                {
+                    "title": {"en": "New Migration", "de": "Neue Migration"},
+                    "icon": "clone icon",
+                    "href": "https://codeberg.org/repo/migrate"
+                },
+                {
+                    "title": {"en": "New Organisation", "de": "Neue Organisation"},
+                    "icon": "user friends icon",
+                    "href": "https://codeberg.org/org/create"
+                }
+            ],
+            "requiredLoginStatus": true
+        },
+        {
+            "title": {"en": "Profile & Settings", "de": "Profil & Einstellungen"},
+            "image": "https://codeberg.org/user/avatar/%u/-1",
+            "dropdown": [
+                {
+                    "title": {"en": "Logged in as %u", "de": "Angemeldet als %u"},
+                    "class": "ui header"
+                },
+                {
+                    "class": "divider"
+                },
+                {
+                    "title": {"en": "Profile", "de": "Profil"},
+                    "icon": "user icon",
+                    "href": "https://codeberg.org/%u"
+                },
+                {
+                    "title": {"en": "Favourites", "de": "Favoriten"},
+                    "icon": "star icon",
+                    "href": "https://codeberg.org/%u?tab=stars"
+                },
+                {
+                    "title": {"en": "Settings", "de": "Einstellungen"},
+                    "icon": "wrench icon",
+                    "href": "https://codeberg.org/user/settings"
+                },
+                {
+                    "class": "divider"
+                },
+                {
+                    "title": {"en": "Logout", "de": "Abmelden"},
+                    "icon": "sign out alternate icon",
+                    "href": "https://codeberg.org/user/logout"
+                }
+            ],
+            "requiredLoginStatus": true
+        }
+    ],
+    "services": [
+        {
+            "name": "repositories",
+            "title": "Repositories",
+            "description": {"en": "A cozy place for your open source code", "de": "Ein gemütlicher Platz für deinen Code"},
+            "href": "https://codeberg.org"
+        },
+        {
+            "name": "pages",
+            "title": "Pages",
+            "description": {"en": "Static websites made easy", "de": "Statische Webseiten für deine Projekte"},
+            "href": "https://codeberg.page"
+        },
+        {
+            "name": "fonts",
+            "title": "Fonts",
+            "description": {"en": "Web fonts, hosted by us", "de": "Webfonts, gehostet von uns"},
+            "href": "https://fonts.codeberg.org"
+        },
+        {
+            "name": "help",
+            "title": "Help",
+            "description": {"en": "How to use everything around Codeberg", "de": "Alle Infos rund um Codeberg und Git"},
+            "href": "https://docs.codeberg.org"
+        },
+        {
+            "name": "verein",
+            "title": "Codeberg e.V.",
+            "description": {"en": "About the non-profit association", "de": "Alles über den Verein"},
+            "href": "https://blog.codeberg.org"
+        }
+    ],
+    "links": [
+        {
+            "title": {"en": "Blog", "de": "Blog"},
+            "icon": "bullhorn icon",
+            "href": "https://blog.codeberg.org"
+        },
+        {
+            "title": {"en": "Join Codeberg e.V.", "de": "Werde Vereinsmitglied"},
+            "icon": "handshake icon",
+            "href": "https://join.codeberg.org"
+        },
+        {
+            "title": {"en": "Donate", "de": "Spenden"},
+            "icon": "donate icon",
+            "class": "orange",
+            "href": "https://liberapay.com/codeberg/donate"
+        }
+    ]
+}

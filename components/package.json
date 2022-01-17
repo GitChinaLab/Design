@@ -1,0 +1,28 @@
+{
+	"name": "codeberg-components",
+	"version": "0.0.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build && cp dist/_assets/index.*.js codeberg-components.js && sed -i '1i // @license magnet:?xt=urn:btih:90dc5c0be029de84e523b9b3922520e79e0e6f08&dn=cc0.txt CC0' codeberg-components.js && echo '// @license-end' >> codeberg-components.js",
+		"fix": "prettier --write ."
+	},
+	"dependencies": {
+		"showdown": "^1.9.1",
+		"toml": "^3.0.0",
+		"vue": "^3.0.4"
+	},
+	"devDependencies": {
+		"@vue/compiler-sfc": "^3.0.4",
+		"@vuedx/typecheck": "^0.3.1-insiders-1606311019.0",
+		"@vuedx/typescript-plugin-vue": "^0.3.1-insiders-1606311019.0",
+		"prettier": "^2.2.1",
+		"typescript": "^4.1.2",
+		"vite": "^1.0.0-rc.13"
+	},
+	"prettier": {
+		"useTabs": true,
+		"semi": true,
+		"endOfLine": "lf",
+		"singleQuote": false
+	}
+}

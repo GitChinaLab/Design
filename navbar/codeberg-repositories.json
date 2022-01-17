@@ -1,0 +1,29 @@
+{
+  "service": "repositories",
+  "links": [
+    {
+      "title": {"en": "Overview", "de": "Übersicht"},
+      "href": "https://codeberg.org/"
+    },
+    {
+      "title": {"en": "Explore", "de": "Erkunden"},
+      "href": "https://codeberg.org/explore/repos"
+    },
+    {
+      "title": {"en": "My Issues", "de": "Meine Issues"},
+      "href": "https://codeberg.org/issues"
+    },
+    {
+      "title": {"en": "My Pull Requests", "de": "Meine Pull-Requests"},
+      "href": "https://codeberg.org/pulls"
+    },
+    {
+      "title": {"en": "My Milestones", "de": "Meine Meilensteine"},
+      "href": "https://codeberg.org/milestones"
+    },
+    {
+      "title": {"en": "Feedback", "de": "Feedback"},
+      "href": "https://codeberg.org/Codeberg/Community/issues"
+    }
+  ]
+}
